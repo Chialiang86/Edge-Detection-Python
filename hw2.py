@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import scipy
 from matplotlib import pyplot as plt
 
 
@@ -52,7 +51,7 @@ for i in range(imgnum):
 	gray_img_edgey = cv2.Sobel(gray_img, cv2.CV_16S, 0, 1)
 	gray_img_edgeabsx = cv2.convertScaleAbs(gray_img_edgex)
 	gray_img_edgeabsy = cv2.convertScaleAbs(gray_img_edgey)
-	gray_img_edge = cv2.addWeighted(gray_img_edgeabsx, 0.5, gray_img_edgeabsx, 0.5, 0)
+	gray_img_edge = cv2.addWeighted(gray_img_edgeabsx, 0.5, gray_img_edgeabsy, 0.5, 0)
 	gray_edge = np.hstack((gray_img_edgeabsx, gray_img_edgeabsy, gray_img_edge))
 	cv2.imwrite(str(i) + '/Edge_gray' + '.jpg', gray_edge)
 
@@ -62,7 +61,7 @@ for i in range(imgnum):
 	eq_img_edgey = cv2.Sobel(eq_img, cv2.CV_16S, 0, 1)
 	eq_img_edgeabsx = cv2.convertScaleAbs(eq_img_edgex)
 	eq_img_edgeabsy = cv2.convertScaleAbs(eq_img_edgey)
-	eq_img_edge = cv2.addWeighted(eq_img_edgeabsx, 0.5, eq_img_edgeabsx, 0.5, 0)
+	eq_img_edge = cv2.addWeighted(eq_img_edgeabsx, 0.5, eq_img_edgeabsy, 0.5, 0)
 	eq_edge = np.hstack((eq_img_edgeabsx, eq_img_edgeabsy, eq_img_edge))
 	cv2.imwrite(str(i) + '/Edge_equalization' + '.jpg', eq_edge)
 
